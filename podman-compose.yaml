@@ -1,0 +1,44 @@
+name: credit-simulator
+
+services:
+  customer-db:
+    image: postgres:17
+    container_name: credit-customer-db
+    environment:
+      POSTGRES_DB: customer_db
+      POSTGRES_USER: ${CUSTOMER_DB_USER}
+      POSTGRES_PASSWORD: ${CUSTOMER_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:5433:5432"
+    volumes:
+      - customer_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  credit-db:
+    image: postgres:17
+    container_name: credit-operation-db
+    environment:
+      POSTGRES_DB: credit_db
+      POSTGRES_USER: ${CREDIT_DB_USER}
+      POSTGRES_PASSWORD: ${CREDIT_DB_PASSWORD}
+    ports:
+      - "127.0.0.1:5434:5432"
+    volumes:
+      - credit_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - pg_isready -U "$$POSTGRES_USER" -d "$$POSTGRES_DB"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  customer_data:
+  credit_data:

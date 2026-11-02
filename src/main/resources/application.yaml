@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: credit-simulator
+  profiles:
+    default: local
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.hibernate.autoconfigure.HibernateJpaAutoConfiguration
+      - org.springframework.boot.data.jpa.autoconfigure.DataJpaRepositoriesAutoConfiguration
+
+  flyway:
+    enabled: false
+    jpa:
+      hibernate:
+        ddl-auto: validate
+      open-in-view: false
