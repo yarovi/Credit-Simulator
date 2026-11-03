@@ -13,5 +13,7 @@ app:
       driver-class-name: org.postgresql.Driver
 
 spring:
+  config:
+    import: "file:./.env[.properties]"
   jpa:
     open-in-view: false

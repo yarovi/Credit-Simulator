@@ -4,11 +4,14 @@ package org.yasmani.io.creditsimulator.customer.infrastructure.persistence;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.yasmani.io.creditsimulator.support.IntegrationTest;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-@SpringBootTest
+//@SpringBootTest
+
+@IntegrationTest
 public class CustomerJpaRepositoryIntegrationTest {
   @Autowired
   private CustomerJpaRepository customerJpaRepository;
