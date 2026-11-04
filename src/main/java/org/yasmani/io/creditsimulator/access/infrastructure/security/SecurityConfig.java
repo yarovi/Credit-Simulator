@@ -28,6 +28,10 @@ public class SecurityConfig {
                 HttpMethod.GET,
                 "/api/v1/creditos/ofertas"
             ).permitAll()
+            .requestMatchers(
+                HttpMethod.POST,
+                "/api/v1/creditos/ofertas/selecciones"
+            ).permitAll()
             .anyRequest().denyAll()
         )
         .build();
